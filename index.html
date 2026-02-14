@@ -1851,7 +1851,7 @@
 
     <script>
         // Gallery Media Path
-        const MEDIA_FOLDER = 'חומרים גלריה/';
+        const MEDIA_FOLDER = ''; // Empty since we're using full GitHub Raw URLs
         
         // Supported file extensions
         const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'];
@@ -1893,20 +1893,21 @@
             // Since we can't directly access file system in browser,
             // we'll try to load files by attempting to access them
             
-            // Alternative: Manual file list (you can add your files here)
+            // Add your GitHub Raw URLs here
+            // Format: https://raw.githubusercontent.com/username/repository/branch/filename
             const manualFileList = [
-                // Example files - replace with your actual files:
-                // 'video1.mp4',
-                // 'photo1.jpg',
-                // 'photo2.png',
+                'https://raw.githubusercontent.com/yair681/C/main/2.png',
+                // Add more files here:
+                // 'https://raw.githubusercontent.com/yair681/C/main/1.jpg',
+                // 'https://raw.githubusercontent.com/yair681/C/main/video1.mp4',
             ];
             
             for (const fileName of manualFileList) {
                 const ext = fileName.substring(fileName.lastIndexOf('.')).toLowerCase();
                 if (IMAGE_EXTENSIONS.includes(ext)) {
-                    mediaFiles.push({ name: fileName, type: 'image', path: MEDIA_FOLDER + fileName });
+                    mediaFiles.push({ name: fileName, type: 'image', path: fileName });
                 } else if (VIDEO_EXTENSIONS.includes(ext)) {
-                    mediaFiles.push({ name: fileName, type: 'video', path: MEDIA_FOLDER + fileName });
+                    mediaFiles.push({ name: fileName, type: 'video', path: fileName });
                 }
             }
             
