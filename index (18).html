@@ -1854,9 +1854,13 @@
         
         // Load Gallery Media from Google Sheets
         async function loadGalleryMedia() {
+            console.log('🎪 loadGalleryMedia started!');
+            
             const galleryGrid = document.getElementById('galleryGrid');
             const loadingMessage = document.getElementById('galleryLoading');
             const noMediaMessage = document.getElementById('noMediaMessage');
+            
+            console.log('Gallery elements:', { galleryGrid, loadingMessage, noMediaMessage });
             
             try {
                 // Google Sheets CSV URL (Direct link)
@@ -1976,6 +1980,15 @@
         // Render gallery items
         function renderGallery(mediaFiles) {
             const galleryGrid = document.getElementById('galleryGrid');
+            const loadingMessage = document.getElementById('galleryLoading');
+            const noMediaMessage = document.getElementById('noMediaMessage');
+            
+            console.log('renderGallery called with', mediaFiles.length, 'files');
+            
+            // Hide loading and no-media messages
+            loadingMessage.style.display = 'none';
+            noMediaMessage.style.display = 'none';
+            
             galleryGrid.innerHTML = '';
             
             mediaFiles.forEach((media, index) => {
@@ -2130,9 +2143,17 @@
 
         // Initialize
         window.addEventListener('load', () => {
+            console.log('✅ Page loaded!');
             createSparkles();
             revealOnScroll();
-            loadGalleryMedia(); // Load gallery media on page load
+            
+            // Load gallery - with error handling
+            try {
+                console.log('🎪 Calling loadGalleryMedia...');
+                loadGalleryMedia();
+            } catch (e) {
+                console.error('❌ Error loading gallery:', e);
+            }
         });
 
         window.addEventListener('scroll', revealOnScroll);
