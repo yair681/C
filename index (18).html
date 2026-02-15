@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חיים משמיים - קוסם מקצועי | מופעי קסמים מצחיקים</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Varela+Round&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #FF1493;
+            --color-secondary: #FFD700;
+            --color-accent: #9D4EDD;
+            --color-magic: #00D9FF;
+            --color-success: #00FF7F;
+            --color-orange: #FF6B00;
+            --color-pink: #FF69B4;
+            --color-lime: #ADFF2F;
+            --color-purple: #BA55D3;
+            --color-blue: #4169E1;
+            --color-neon-green: #39FF14;
+            --color-neon-pink: #FF10F0;
+            --color-neon-orange: #FF9500;
+            --color-neon-blue: #00F0FF;
+            --color-neon-yellow: #FFFF00;
+            --color-dark: #2D3142;
+            --color-light: #FFF9F0;
+            --font-display: 'Fredoka', 'Varela Round', sans-serif;
+            --font-body: 'Rubik', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(45deg, 
+                #FF1493 0%, 
+                #FFD700 10%, 
+                #00D9FF 20%, 
+                #9D4EDD 30%, 
+                #00FF7F 40%, 
+                #FF6B00 50%, 
+                #FF69B4 60%, 
+                #ADFF2F 70%, 
+                #4169E1 80%, 
+                #FF1493 90%, 
+                #FFD700 100%);
+            background-size: 400% 400%;
+            animation: bodyGradient 20s ease infinite;
+            color: var(--color-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        @keyframes bodyGradient {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Magical Background Animation */
+        .magic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            border-radius: 50%;
+            animation: sparkleFloat 8s infinite;
+            opacity: 0;
+            font-weight: bold;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { opacity: 0; transform: translateY(0) rotate(0deg); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.95) 0%, 
+                rgba(157, 78, 221, 0.95) 25%, 
+                rgba(0, 217, 255, 0.95) 50%, 
+                rgba(255, 215, 0, 0.95) 75%, 
+                rgba(0, 255, 127, 0.95) 100%);
+            background-size: 300% 300%;
+            animation: navGradient 20s ease infinite;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes navGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: white;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-links a:hover {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--color-accent);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, #FFD700, #FF1493);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, 
+                #FF10F0 0%, 
+                #FFD700 12%, 
+                #FF1493 24%, 
+                #9D4EDD 36%, 
+                #00D9FF 48%, 
+                #39FF14 60%, 
+                #FF9500 72%, 
+                #00F0FF 84%, 
+                #FFFF00 96%, 
+                #FF10F0 100%);
+            background-size: 600% 600%;
+            animation: hyperGradientShift 20s ease infinite;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes hyperGradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 25%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 75%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '✨🎩🎪🎭✨';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.05;
+            top: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 4px 4px 0 #FF1493, 8px 8px 0 #9D4EDD, 12px 12px 0 #00D9FF, 
+                         0 0 30px rgba(0,0,0,0.8), 0 0 60px rgba(0,0,0,0.5);
+            animation: slideInRight 1s ease 0.2s both, textGlow 2s ease-in-out infinite;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes textGlow {
+            0%, 100% { 
+                text-shadow: 4px 4px 0 #FF1493, 8px 8px 0 #9D4EDD, 12px 12px 0 #00D9FF, 
+                             0 0 30px rgba(0,0,0,0.8), 0 0 60px rgba(0,0,0,0.5);
+            }
+            50% { 
+                text-shadow: 4px 4px 0 #FFD700, 8px 8px 0 #FF1493, 12px 12px 0 #9D4EDD, 
+                             0 0 40px rgba(0,0,0,0.9), 0 0 80px rgba(0,0,0,0.6);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6);
+            animation: slideInRight 1s ease 0.4s both;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.4);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: slideInRight 1s ease 0.6s both;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInRight 1s ease 0.8s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF1493, #FFD700, #00D9FF);
+            background-size: 200% 200%;
+            animation: gradientFlow 3s ease infinite;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 20, 147, 0.7), 0 0 50px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-accent);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 3px solid var(--color-accent);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(106, 76, 147, 0.3);
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInLeft 1s ease 0.4s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #FF1493 0%, #9D4EDD 25%, #00D9FF 50%, #00FF7F 75%, #FFD700 100%);
+            background-size: 300% 300%;
+            animation: rainbowShift 8s ease infinite;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, 
+                #FF1493 0%, 
+                #FFD700 20%, 
+                #00D9FF 40%, 
+                #9D4EDD 60%, 
+                #00FF7F 80%, 
+                #FF6B00 100%);
+            background-size: 300% 300%;
+            animation: statsGradient 15s ease infinite;
+            padding: 4rem 2rem;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3), inset 0 0 100px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes statsGradient {
+            0% { background-position: 0% 50%; }
+            33% { background-position: 50% 100%; }
+            66% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 5px solid;
+        }
+
+        .stat-item:nth-child(1) {
+            border-color: #FF1493;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.6), 0 0 40px rgba(255, 20, 147, 0.4);
+        }
+
+        .stat-item:nth-child(2) {
+            border-color: #FFD700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .stat-item:nth-child(3) {
+            border-color: #00D9FF;
+            background: linear-gradient(135deg, #00D9FF, #00A6ED);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.6), 0 0 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .stat-item:nth-child(4) {
+            border-color: #9D4EDD;
+            background: linear-gradient(135deg, #9D4EDD, #BA55D3);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.6), 0 0 40px rgba(157, 78, 221, 0.4);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-15px) scale(1.08) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 60px currentColor;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 600;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, 
+                rgba(255, 20, 147, 0.15) 0%, 
+                rgba(0, 217, 255, 0.15) 50%, 
+                rgba(255, 215, 0, 0.15) 100%);
+            border-radius: 50px;
+            box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.5));
+            animation: titlePulse 3s ease-in-out infinite;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: -1;
+            filter: blur(10px);
+        }
+
+        @keyframes titlePulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(157, 78, 221, 0.8));
+            }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.4rem;
+            color: var(--color-dark);
+            margin-bottom: 4rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--color-dark);
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #FFD700 0%, #FF1493 33%, #9D4EDD 66%, #00D9FF 100%);
+            background-size: 300% 300%;
+            animation: rainbowShift 8s ease infinite;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid;
+            color: white;
+        }
+
+        .service-card:nth-child(1) {
+            border-color: white;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            box-shadow: 0 15px 50px rgba(255, 20, 147, 0.5);
+        }
+
+        .service-card:nth-child(2) {
+            border-color: white;
+            background: linear-gradient(135deg, #9D4EDD 0%, #BA55D3 100%);
+            box-shadow: 0 15px 50px rgba(157, 78, 221, 0.5);
+        }
+
+        .service-card:nth-child(3) {
+            border-color: white;
+            background: linear-gradient(135deg, #00D9FF 0%, #4169E1 100%);
+            box-shadow: 0 15px 50px rgba(0, 217, 255, 0.5);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            background: white;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card ul {
+            margin-top: 1.5rem;
+            list-style: none;
+        }
+
+        .service-card ul li {
+            padding: 0.5rem 0;
+            padding-right: 1.5rem;
+            position: relative;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .service-card ul li::before {
+            content: '✨';
+            position: absolute;
+            right: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background: linear-gradient(135deg, 
+                #FFD700 0%, 
+                #FF1493 20%, 
+                #9D4EDD 40%, 
+                #00D9FF 60%, 
+                #00FF7F 80%, 
+                #FF6B00 100%);
+            background-size: 300% 300%;
+            animation: testimonialsGradient 20s ease infinite;
+            padding: 6rem 2rem;
+            margin: 0;
+            max-width: 100%;
+            box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes testimonialsGradient {
+            0% { background-position: 0% 50%; }
+            33% { background-position: 100% 50%; }
+            66% { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border-right: 6px solid;
+        }
+
+        .testimonial-card:nth-child(1) { border-right-color: #FF1493; }
+        .testimonial-card:nth-child(2) { border-right-color: #FFD700; }
+        .testimonial-card:nth-child(3) { border-right-color: #00D9FF; }
+        .testimonial-card:nth-child(4) { border-right-color: #9D4EDD; }
+        .testimonial-card:nth-child(5) { border-right-color: #00FF7F; }
+        .testimonial-card:nth-child(6) { border-right-color: #FF6B00; }
+        .testimonial-card:nth-child(7) { border-right-color: #4169E1; }
+        .testimonial-card:nth-child(8) { border-right-color: #ADFF2F; }
+        .testimonial-card:nth-child(9) { border-right-color: #BA55D3; }
+        .testimonial-card:nth-child(10) { border-right-color: #FF69B4; }
+        .testimonial-card:nth-child(11) { border-right-color: #FFD700; }
+        .testimonial-card:nth-child(12) { border-right-color: #00D9FF; }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 8rem;
+            font-family: Georgia, serif;
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .testimonial-card:nth-child(1)::before { color: #FF1493; }
+        .testimonial-card:nth-child(2)::before { color: #FFD700; }
+        .testimonial-card:nth-child(3)::before { color: #00D9FF; }
+        .testimonial-card:nth-child(4)::before { color: #9D4EDD; }
+        .testimonial-card:nth-child(5)::before { color: #00FF7F; }
+        .testimonial-card:nth-child(6)::before { color: #FF6B00; }
+        .testimonial-card:nth-child(7)::before { color: #4169E1; }
+        .testimonial-card:nth-child(8)::before { color: #ADFF2F; }
+        .testimonial-card:nth-child(9)::before { color: #BA55D3; }
+        .testimonial-card:nth-child(10)::before { color: #FF69B4; }
+        .testimonial-card:nth-child(11)::before { color: #FFD700; }
+        .testimonial-card:nth-child(12)::before { color: #00D9FF; }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .testimonial-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-card:nth-child(1) .author-avatar {
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+        }
+
+        .testimonial-card:nth-child(2) .author-avatar {
+            background: linear-gradient(135deg, #FFD700, #FF6B00);
+        }
+
+        .testimonial-card:nth-child(3) .author-avatar {
+            background: linear-gradient(135deg, #00D9FF, #4169E1);
+        }
+
+        .testimonial-card:nth-child(4) .author-avatar {
+            background: linear-gradient(135deg, #9D4EDD, #BA55D3);
+        }
+
+        .testimonial-card:nth-child(5) .author-avatar {
+            background: linear-gradient(135deg, #00FF7F, #ADFF2F);
+        }
+
+        .testimonial-card:nth-child(6) .author-avatar {
+            background: linear-gradient(135deg, #FF6B00, #FF1493);
+        }
+
+        .testimonial-card:nth-child(7) .author-avatar {
+            background: linear-gradient(135deg, #4169E1, #9D4EDD);
+        }
+
+        .testimonial-card:nth-child(8) .author-avatar {
+            background: linear-gradient(135deg, #ADFF2F, #00D9FF);
+        }
+
+        .testimonial-card:nth-child(9) .author-avatar {
+            background: linear-gradient(135deg, #BA55D3, #FF69B4);
+        }
+
+        .testimonial-card:nth-child(10) .author-avatar {
+            background: linear-gradient(135deg, #FFD700, #00FF7F);
+        }
+
+        .testimonial-card:nth-child(11) .author-avatar {
+            background: linear-gradient(135deg, #FF1493, #00D9FF);
+        }
+
+        .testimonial-card:nth-child(12) .author-avatar {
+            background: linear-gradient(135deg, #9D4EDD, #FFD700);
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            color: var(--color-accent);
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            color: var(--color-dark);
+            opacity: 0.7;
+        }
+
+        .video-testimonials {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            background: var(--color-accent);
+            color: white;
+            padding: 4rem;
+            border-radius: 25px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, 
+                #FF1493 0%, 
+                #FFD700 25%, 
+                #00D9FF 50%, 
+                #9D4EDD 75%, 
+                #00FF7F 100%);
+            background-size: 300% 300%;
+            animation: contactGradient 20s ease infinite;
+            border-radius: 40px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+            padding: 5rem;
+            margin: 4rem auto;
+        }
+
+        @keyframes contactGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-info-box {
+            background: white;
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info-box h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%);
+            background-size: 200% 200%;
+            animation: whatsappGlow 3s ease infinite;
+            color: white;
+            padding: 2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5), 0 0 50px rgba(37, 211, 102, 0.3);
+            transition: all 0.4s ease;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes whatsappGlow {
+            0% { 
+                background-position: 0% 50%;
+                box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5), 0 0 50px rgba(37, 211, 102, 0.3);
+            }
+            50% { 
+                background-position: 100% 50%;
+                box-shadow: 0 20px 50px rgba(37, 211, 102, 0.7), 0 0 70px rgba(37, 211, 102, 0.5);
+            }
+            100% { 
+                background-position: 0% 50%;
+                box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5), 0 0 50px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(37, 211, 102, 0.6), 0 0 80px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-button:active {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-item:nth-child(1) .contact-icon {
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+        }
+
+        .contact-item:nth-child(2) .contact-icon {
+            background: linear-gradient(135deg, #00D9FF, #4169E1);
+        }
+
+        .contact-item:nth-child(3) .contact-icon {
+            background: linear-gradient(135deg, #FFD700, #FF6B00);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-link:nth-child(1) {
+            background: linear-gradient(135deg, #4169E1, #00D9FF);
+        }
+
+        .social-link:nth-child(2) {
+            background: linear-gradient(135deg, #FF1493, #FF69B4, #FFD700);
+        }
+
+        .social-link:nth-child(3) {
+            background: linear-gradient(135deg, #FF0000, #FF6B00);
+        }
+
+        .social-link:nth-child(4) {
+            background: linear-gradient(135deg, #00FF7F, #ADFF2F);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 50%, var(--color-magic) 100%);
+            background-size: 200% 200%;
+            animation: footerGradient 15s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes footerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        footer a {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        footer a:hover {
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            #contact {
+                padding: 3rem 2rem;
+            }
+
+            .contact-info-box {
+                padding: 2rem;
+            }
+
+            .whatsapp-button {
+                padding: 1.5rem 2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .whatsapp-button span {
+                margin-left: 0 !important;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        body {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--color-light);
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            background: var(--color-accent);
+            color: white;
+        }
+
+        .modal-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p,
+        .modal-content li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        .modal-content ul {
+            margin-right: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Magical Background -->
+    <div class="magic-bg" id="magicBg"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">חיים משמיים ✨</a>
+            <ul class="nav-links">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#services">שירותים</a></li>
+                <li><a href="#testimonials">המלצות</a></li>
+                <li><a href="#gallery">גלריה</a></li>
+                <li><a href="#contact" class="cta-button">צור קשר</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>חיים משמיים 🎩</h1>
+                <p class="subtitle">קוסם, להטוטן ואומן חושים מקצועי!</p>
+                <p>מופע מהפנט, מרהיב ומצחיק במיוחד לילדים, נוער ומבוגרים! בשילוב תפאורה מפוארת, קסמים מרהיבים, להטוטי אש 🔥, קסם ריחוף מעל החרבות, בובות ענק, בלוני צורות, פרסים לכולם, הגברה מקצועית, מכונת בועות סבון, לייזרים, כדורי אורות, מכונת עשן, גב במה מפואר, מחצלות והזמנה דיגיטלית מונפשת! 🎪✨</p>
+                <p style="font-weight: 700; font-size: 1.4rem; margin-top: 1rem;">המופע עד שעתיים - הפקה מהקסמים!</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">הזמינו עכשיו! 🎪</a>
+                    <a href="#services" class="btn-secondary">למידע נוסף</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">
+                    🎭✨🎩
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">שנות ניסיון</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">מופעים מוצלחים</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">לקוחות מרוצים</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">🎪</div>
+                <div class="stat-label">קסם אמיתי</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="reveal">
+        <h2 class="section-title">קצת עליי 🎭</h2>
+        <p class="section-subtitle">הקוסם, הלהטוטן ואומן החושים שיגרום לכם לצחוק מהלב!</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p>שלום! אני <strong>חיים משמיים</strong>, קוסם, להטוטן ואומן חושים מקצועי עם יותר מ-20 שנות ניסיון בהפקת מופעי קסמים מהפנטים ומצחיקים במיוחד!</p>
+                <p>המופע שלי כולל: <strong>תפאורה מפוארת</strong>, <strong>קסמים מרהיבים</strong>, <strong>להטוטי אש 🔥</strong>, <strong>קסם ריחוף מעל החרבות</strong>, <strong>בובות ענק</strong>, <strong>בלוני צורות</strong>, פרסים לכולם, הגברה מקצועית ביותר, מכונת בועות סבון, לייזרים, כדורי אורות, מכונת עשן, גב במה מפואר, מחצלות והזמנה דיגיטלית מונפשת עם תמונות החוגג/ת!</p>
+                <p>אני מופיע בכל רחבי הארץ ומתמחה בימי הולדת, אירועי בית ספר, אירועי חברות ומופעי במה. כל מופע מותאם אישית לקהל ולאירוע שלכם!</p>
+                <p><strong>המופע עד שעתיים מלאות - הפקה מהקסמים!</strong> 🎪✨</p>
+                <p>המטרה שלי: להפוך את האירוע שלכם לחוויה קסומה שכולם יזכרו!</p>
+            </div>
+            <div class="about-image">
+                🎩✨😄
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="reveal">
+        <h2 class="section-title">סוגי המופעים 🎪</h2>
+        <p class="section-subtitle">מופעים מותאמים אישית לכל אירוע!</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🎂</span>
+                <h3>ימי הולדת</h3>
+                <p>מופע קסמים מלא צחוק ואנרגיה שמותאם במיוחד לילדי יום ההולדת!</p>
+                <ul>
+                    <li>משחקים אינטראקטיביים</li>
+                    <li>קסמים מדהימים</li>
+                    <li>צחוק ללא הפסקה</li>
+                    <li>פרסים לכולם</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏫</span>
+                <h3>אירועי בית ספר</h3>
+                <p>מופעים מיוחדים לבתי ספר וגני ילדים - חוויה חינוכית משעשעת ובלתי נשכחת!</p>
+                <ul>
+                    <li>מופעי במה גדולים</li>
+                    <li>התאמה לכל גיל</li>
+                    <li>אינטראקציה מלאה</li>
+                    <li>חוויה חינוכית</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏢</span>
+                <h3>אירועי חברות</h3>
+                <p>מופעים קסומים לאירועי חברות, ימי גיבוש, וכנסים עסקיים!</p>
+                <ul>
+                    <li>מופעי במה מקצועיים</li>
+                    <li>אינטראקציה עם הקהל</li>
+                    <li>התאמה למסר החברה</li>
+                    <li>מופע בן שעתיים</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title">מה אומרים עלינו? ⭐</h2>
+            <p class="section-subtitle">המלצות מלקוחות מרוצים!</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">חיים הקוסם הפך את יום ההולדת של הבן שלי לחוויה בלתי נשכחת! הילדים צחקו ונהנו כל הזמן, והקסמים היו פשוט מדהימים. ממליצה בחום!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ר</div>
+                        <div class="author-info">
+                            <h4>רות כהן</h4>
+                            <p>הורה מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">המופע היה פשוט מושלם! חיים ידע לשמור על הילדים מרותקים למשך שעתיים שלמות. האנרגיה שלו מדבקת והקסמים פשוט מרהיבים. תודה רבה!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ד</div>
+                        <div class="author-info">
+                            <h4>דני לוי</h4>
+                            <p>הורה מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">הזמנו את חיים לאירוע חברה שלנו והוא היה פשוט מעולה! מקצועי, מצחיק, ויודע לשמור על הקהל מרותק. כולם יצאו מרוצים ומדברים על המופע!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">מ</div>
+                        <div class="author-info">
+                            <h4>מיכל ברק</h4>
+                            <p>מנהלת אירועים</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">קוסם מדהים עם חוש הומור נהדר! הילדים והמבוגרים נהנו באותה מידה. המופע היה מלא אנרגיה חיובית ורגעים קסומים. תודה רבה חיים!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">י</div>
+                        <div class="author-info">
+                            <h4>יוסי אברהם</h4>
+                            <p>לקוח מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">התפאורה המרהיבה, הלייזרים, מכונת העשן והבועות סבון - הכל היה פשוט מושלם! הילדים לא הפסיקו לדבר על המופע במשך שבועות. ממליצה בחום רב!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ש</div>
+                        <div class="author-info">
+                            <h4>שרה מזרחי</h4>
+                            <p>גננת מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">חיים הגיע עם הכל! המופע היה מקצועי ברמה הכי גבוהה. להטוטי האש היו מרהיבים והילדים פשוט התלהבו מהבובות הענקיות. שווה כל שקל!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">א</div>
+                        <div class="author-info">
+                            <h4>אבי שמואל</h4>
+                            <p>מנהל בית ספר</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">מופע פנטסטי עם קסמים מרהיבים! הילדים היו בהלם מקסם הריחוף מעל החרבות. האווירה הייתה מדהימה והילדים קיבלו פרסים - כולם יצאו מרוצים!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ל</div>
+                        <div class="author-info">
+                            <h4>לירון גולן</h4>
+                            <p>הורה מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">ההזמנה הדיגיטלית המונפשת הייתה מקסימה! המופע עצמו היה מעל ומעבר לציפיות. חיים קוסם אמיתי שיודע לשמח ילדים ומבוגרים. אשמח להזמין שוב!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">נ</div>
+                        <div class="author-info">
+                            <h4>נועה אלון</h4>
+                            <p>לקוחה מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">מופע מושלם לבית הספר! הילדים היו מרותקים במשך שעתיים שלמות. השילוב של קסמים, צחוק וחוויה חינוכית היה פשוט מדהים. ממליץ בחום!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ר</div>
+                        <div class="author-info">
+                            <h4>רוני כהן</h4>
+                            <p>מורה בכיר</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">הבלונים המיוחדים, הבובות הענקיות והאווירה המדהימה - הכל היה ברמה הכי גבוהה! חיים אמן אמיתי שיודע לעשות שמח. תודה על חוויה בלתי נשכחת!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ט</div>
+                        <div class="author-info">
+                            <h4>טלי רוזנברג</h4>
+                            <p>הורה מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">ההפקה הייתה פשוט מהממת! גב במה מפואר, מחצלות נוחות, הגברה מעולה - חיים חושב על כל פרט. המופע היה קסום ומצחיק במיוחד. מומלץ בחום!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ג</div>
+                        <div class="author-info">
+                            <h4>גיל אבידן</h4>
+                            <p>מארגן אירועים</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">מופע מרהיב עם אפקטים מיוחדים! הלייזרים וכדורי האורות יצרו אווירה קסומה. הילדים והמבוגרים נהנו מכל רגע. חיים קוסם מקצוען אמיתי!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ע</div>
+                        <div class="author-info">
+                            <h4>עדי ששון</h4>
+                            <p>לקוח מרוצה</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="reveal">
+        <h2 class="section-title">גלריה 📸</h2>
+        <p class="section-subtitle">רגעים קסומים מהמופעים שלנו!</p>
+        
+        <!-- Gallery Grid - Will be populated dynamically -->
+        <div id="galleryGrid" class="gallery-grid">
+            <!-- Media items will be loaded here -->
+        </div>
+
+        <!-- Loading Message -->
+        <div id="galleryLoading" style="text-align: center; padding: 3rem; font-size: 1.3rem; color: white;">
+            ⏳ טוען את הגלריה...
+        </div>
+
+        <!-- No Media Message -->
+        <div id="noMediaMessage" style="display: none; text-align: center; padding: 3rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📸</div>
+            <p style="font-size: 1.3rem; color: white; background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 20px; display: inline-block;">
+                הוסיפו תמונות וסרטונים לתיקייה:<br>
+                <code style="background: rgba(255,255,255,0.9); color: #333; padding: 0.8rem 1.5rem; border-radius: 12px; display: inline-block; margin-top: 1rem; font-size: 1.1rem; font-weight: 600;">
+                    C:\Users\przyy\Desktop\חיים משמיים\חומרים גלריה
+                </code><br>
+                <span style="font-size: 0.95rem; opacity: 0.9; display: block; margin-top: 1rem;">
+                    קבצים נתמכים: JPG, PNG, GIF, MP4, MOV, AVI
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div id="lightboxModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 95vw; max-height: 95vh; padding: 0; background: transparent; box-shadow: none;">
+            <span class="modal-close" onclick="closeLightbox()" style="position: fixed; top: 20px; left: 20px; font-size: 3rem; color: white; background: rgba(0,0,0,0.7); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10001; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">&times;</span>
+            <div id="lightboxContent" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 90vh;">
+                <!-- Media content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="reveal">
+        <h2 class="section-title">בואו נדבר! 📞</h2>
+        <p class="section-subtitle">מוכנים להזמין מופע קסום? צרו קשר עכשיו!</p>
+        <div class="contact-wrapper">
+            <div class="contact-info-box">
+                <h3>פרטי יצירת קשר</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>טלפון:</strong><br>
+                        <a href="tel:0544347168" style="color: var(--color-dark); text-decoration: none; font-size: 1.3rem; font-weight: 700;">054-434-7168</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🌍</div>
+                    <div>
+                        <strong>אזור פעילות:</strong><br>
+                        כל רחבי הארץ
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div>
+                        <strong>משך מופע:</strong><br>
+                        עד שעתיים מלאות
+                    </div>
+                </div>
+
+                <!-- Big WhatsApp Button -->
+                <div style="margin-top: 3rem; text-align: center;">
+                    <a href="https://wa.me/972544347168?text=היי%20חיים%2C%20אני%20מעוניין%20במופע%20קסמים%20%F0%9F%8E%AA%E2%9C%A8" 
+                       target="_blank" 
+                       class="whatsapp-button">
+                        <span style="font-size: 3rem; margin-left: 1rem;">💬</span>
+                        <div>
+                            <div style="font-size: 1.8rem; font-weight: 800;">שלחו הודעה בוואטסאפ!</div>
+                            <div style="font-size: 1.2rem; font-weight: 500; opacity: 0.9;">מענה מהיר ומקצועי ✨</div>
+                        </div>
+                    </a>
+                </div>
+
+                <h3 style="margin-top: 3rem;">עקבו אחרינו ברשתות החברתיות</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100014056531099" target="_blank" class="social-link" title="Facebook">📘</a>
+                    <a href="https://greenbook.co.il/card/4143/15812" target="_blank" class="social-link" title="כרטיס ביקור דיגיטלי">💳</a>
+                    <a href="#" class="social-link" title="YouTube">🎬</a>
+                    <a href="https://wa.me/972544347168" target="_blank" class="social-link" title="WhatsApp">💬</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closePrivacyModal()">&times;</span>
+            <h2>הצהרת פרטיות 🔒</h2>
+            
+            <h3>מדיניות פרטיות</h3>
+            <p>חיים משמיים - קוסם מקצועי מכבד את פרטיות המבקרים באתר ומחויב לשמור על המידע האישי שלכם.</p>
+            
+            <h3>איסוף מידע</h3>
+            <p>אנו עשויים לאסוף מידע אישי כאשר אתם:</p>
+            <ul>
+                <li>ממלאים טופס יצירת קשר באתר</li>
+                <li>יוצרים קשר טלפוני או באמצעות דואר אלקטרוני</li>
+                <li>מבקרים באתר (מידע סטטיסטי כללי)</li>
+            </ul>
+
+            <h3>שימוש במידע</h3>
+            <p>המידע שנאסף משמש אך ורק למטרות הבאות:</p>
+            <ul>
+                <li>מענה לפניותיכם והצעת מחיר למופעים</li>
+                <li>תקשורת לגבי אירועים והזמנות</li>
+                <li>שיפור השירות שלנו</li>
+            </ul>
+
+            <h3>אבטחת מידע</h3>
+            <p>אנו נוקטים באמצעי אבטחה מתאימים כדי להגן על המידע האישי שלכם מפני גישה, שימוש או חשיפה בלתי מורשים.</p>
+
+            <h3>העברת מידע לצדדים שלישיים</h3>
+            <p>אנו לא מוכרים, מעבירים או משתפים את המידע האישי שלכם עם צדדים שלישיים ללא הסכמתכם המפורשת.</p>
+
+            <h3>זכויותיכם</h3>
+            <p>יש לכם זכות לבקש לעיין במידע האישי שלכם, לתקן אותו או למחוק אותו. לבקשות כאלה, נא ליצור קשר בטלפון 054-434-7168.</p>
+
+            <h3>יצירת קשר</h3>
+            <p>לשאלות או בקשות בנוגע למדיניות הפרטיות, ניתן ליצור קשר:</p>
+            <p><strong>טלפון:</strong> 054-434-7168</p>
+        </div>
+    </div>
+
+    <!-- Accessibility Modal -->
+    <div id="accessibilityModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeAccessibilityModal()">&times;</span>
+            <h2>הצהרת נגישות ♿</h2>
+            
+            <h3>התחייבות לנגישות</h3>
+            <p>חיים משמיים - קוסם מקצועי מחויב לספק שירות נגיש לכלל הקהל ולאפשר לכל אדם לגלוש באתר בנוחות.</p>
+            
+            <h3>הערה חשובה</h3>
+            <p><strong>חיים משמיים פועל כעוסק פטור</strong> ולכן אינו חייב על פי חוק בהנגשת האתר בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013.</p>
+            
+            <h3>מאמצי נגישות</h3>
+            <p>למרות שאיננו מחויבים על פי חוק, אנו עושים מאמצים להנגיש את האתר ככל האפשר:</p>
+            <ul>
+                <li>שימוש בצבעים ניגודיים לקריאה נוחה</li>
+                <li>מבנה אתר ברור וקל לניווט</li>
+                <li>כפתורים וקישורים ברורים</li>
+                <li>תמיכה בשפת עברית מלאה עם כיוון RTL</li>
+            </ul>
+
+            <h3>דרכי התקשרות חלופיות</h3>
+            <p>אם נתקלתם בבעיה בגלישה באתר או שיש לכם שאלות, אנו זמינים לשירותכם:</p>
+            <p><strong>טלפון:</strong> 054-434-7168</p>
+            <p><strong>שעות פעילות:</strong> ימים א'-ה' בין השעות 9:00-20:00</p>
+
+            <h3>משוב ובקשות</h3>
+            <p>נשמח לקבל את המשוב שלכם ולהיעזר בו כדי לשפר את נגישות האתר. אנא צרו קשר במספר הטלפון לעיל.</p>
+
+            <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.8;">הצהרה זו עודכנה לאחרונה בפברואר 2026.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 חיים משמיים - קוסם מקצועי | כל הזכויות שמורות ✨</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">מופעי קסמים מצחיקים לכל האירועים</p>
+        <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; font-size: 0.9rem;">
+            <a href="#" onclick="openPrivacyModal(); return false;" style="color: white; text-decoration: underline; opacity: 0.8;">הצהרת פרטיות</a>
+            <a href="#" onclick="openAccessibilityModal(); return false;" style="color: white; text-decoration: underline; opacity: 0.8;">הצהרת נגישות</a>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery Media Path
+        const MEDIA_FOLDER = 'חומרים גלריה/';
+        
+        // Supported file extensions
+        const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'];
+        const VIDEO_EXTENSIONS = ['.mp4', '.mov', '.avi', '.wmv', '.webm', '.mkv'];
+        
+        // Load Gallery Media from Google Sheets
+        async function loadGalleryMedia() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const loadingMessage = document.getElementById('galleryLoading');
+            const noMediaMessage = document.getElementById('noMediaMessage');
+            
+            try {
+                // Google Sheets CSV URL (Direct link)
+                const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSyvRqbeAJb6JuATYK7NBYi8ki1ruFvmRx344UAD6ZqD3BsIhzXHahfQTcnF_gT_5RgkQMYOuIY0HbL/pub?output=csv';
+                
+                const response = await fetch(SHEET_URL, {
+                    method: 'GET',
+                    cache: 'no-cache',
+                    headers: {
+                        'Accept': 'text/csv'
+                    }
+                });
+                
+                if (!response.ok) {
+                    console.error('Response status:', response.status);
+                    console.error('Response text:', await response.text());
+                    throw new Error(`שגיאה בטעינה: ${response.status}`);
+                }
+                
+                const csvText = await response.text();
+                
+                // Parse CSV
+                const mediaFiles = parseCSV(csvText);
+                
+                if (mediaFiles && mediaFiles.length > 0) {
+                    loadingMessage.style.display = 'none';
+                    renderGallery(mediaFiles);
+                } else {
+                    loadingMessage.style.display = 'none';
+                    noMediaMessage.innerHTML = '<p style="text-align: center; color: white; font-size: 1.2rem; background: rgba(0,0,0,0.5); padding: 2rem; border-radius: 20px;">📸 אין עדיין תמונות בגלריה<br><br>הוסף תמונות לגיליון Google Sheets</p>';
+                    noMediaMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('שגיאה:', error);
+                loadingMessage.style.display = 'none';
+                noMediaMessage.innerHTML = '<p style="text-align: center; color: white; font-size: 1.2rem; background: rgba(255,0,0,0.3); padding: 2rem; border-radius: 20px;">⚠️ שגיאה בטעינת הגלריה<br><br>ודא שהגיליון פורסם לציבור:<br>File → Share → Publish to web</p>';
+                noMediaMessage.style.display = 'block';
+            }
+        }
+        
+        // Parse CSV data from Google Sheets
+        function parseCSV(csvText) {
+            console.log('CSV Raw Text:', csvText.substring(0, 500)); // Debug: show first 500 chars
+            
+            const lines = csvText.trim().split(/\r?\n/);
+            const mediaFiles = [];
+            
+            console.log('Total lines:', lines.length);
+            
+            // Skip empty CSV
+            if (lines.length <= 1) {
+                console.log('CSV is empty or has only header');
+                return mediaFiles;
+            }
+            
+            // Skip header row (line 0) and process data rows
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                
+                console.log(`Processing line ${i}:`, line);
+                
+                // Simple CSV split by comma
+                const columns = line.split(',').map(col => col.trim().replace(/^"|"$/g, ''));
+                
+                console.log('Parsed columns:', columns);
+                
+                if (columns.length >= 2) {
+                    const type = columns[0].toLowerCase();
+                    const url = columns[1];
+                    const title = columns[2] || '';
+                    
+                    console.log(`Type: ${type}, URL: ${url}, Title: ${title}`);
+                    
+                    // Validate
+                    if ((type === 'image' || type === 'video') && url && url.startsWith('http')) {
+                        const media = {
+                            type: type,
+                            path: url,
+                            name: title || (type === 'image' ? 'תמונה' : 'סרטון')
+                        };
+                        console.log('Added media:', media);
+                        mediaFiles.push(media);
+                    } else {
+                        console.log('Skipped line - invalid format');
+                    }
+                }
+            }
+            
+            console.log('Total media files found:', mediaFiles.length);
+            return mediaFiles;
+        }
+        
+        // Parse a single CSV line (handle commas inside quotes)
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            
+            result.push(current);
+            return result;
+        }
+        
+        // Render gallery items
+        function renderGallery(mediaFiles) {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+            
+            mediaFiles.forEach((media, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.style.cursor = 'pointer';
+                item.onclick = () => openLightbox(media);
+                
+                if (media.type === 'image') {
+                    const img = document.createElement('img');
+                    img.src = media.path;
+                    img.alt = media.name;
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    img.onerror = () => {
+                        item.innerHTML = '<div style="font-size: 3rem;">🖼️</div><div style="font-size: 0.9rem; margin-top: 0.5rem;">תמונה</div>';
+                    };
+                    item.appendChild(img);
+                } else if (media.type === 'video') {
+                    const video = document.createElement('video');
+                    video.src = media.path;
+                    video.style.width = '100%';
+                    video.style.height = '100%';
+                    video.style.objectFit = 'cover';
+                    video.muted = true;
+                    video.loop = true;
+                    video.onerror = () => {
+                        item.innerHTML = '<div style="font-size: 3rem;">🎬</div><div style="font-size: 0.9rem; margin-top: 0.5rem;">סרטון</div>';
+                    };
+                    
+                    // Play video on hover
+                    item.onmouseenter = () => video.play();
+                    item.onmouseleave = () => video.pause();
+                    
+                    item.appendChild(video);
+                    
+                    // Add video indicator
+                    const playIcon = document.createElement('div');
+                    playIcon.innerHTML = '▶';
+                    playIcon.style.position = 'absolute';
+                    playIcon.style.top = '50%';
+                    playIcon.style.left = '50%';
+                    playIcon.style.transform = 'translate(-50%, -50%)';
+                    playIcon.style.fontSize = '3rem';
+                    playIcon.style.color = 'white';
+                    playIcon.style.textShadow = '0 0 10px rgba(0,0,0,0.8)';
+                    playIcon.style.pointerEvents = 'none';
+                    item.appendChild(playIcon);
+                }
+            });
+        }
+        
+        // Open lightbox
+        function openLightbox(media) {
+            const modal = document.getElementById('lightboxModal');
+            const content = document.getElementById('lightboxContent');
+            content.innerHTML = '';
+            
+            if (media.type === 'image') {
+                const img = document.createElement('img');
+                img.src = media.path;
+                img.style.maxWidth = '90vw';
+                img.style.maxHeight = '90vh';
+                img.style.objectFit = 'contain';
+                img.style.borderRadius = '12px';
+                img.style.boxShadow = '0 25px 80px rgba(0,0,0,0.8)';
+                content.appendChild(img);
+            } else if (media.type === 'video') {
+                const video = document.createElement('video');
+                video.src = media.path;
+                video.controls = true;
+                video.autoplay = true;
+                video.style.maxWidth = '90vw';
+                video.style.maxHeight = '90vh';
+                video.style.borderRadius = '12px';
+                video.style.boxShadow = '0 25px 80px rgba(0,0,0,0.8)';
+                content.appendChild(video);
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close lightbox
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Stop any playing videos
+            const videos = document.getElementById('lightboxContent').getElementsByTagName('video');
+            for (let video of videos) {
+                video.pause();
+            }
+        }
+
+        // Create magical sparkles with more confetti
+        function createSparkles() {
+            const magicBg = document.getElementById('magicBg');
+            const colors = ['#FF1493', '#FFD700', '#00D9FF', '#00FF7F', '#9D4EDD', '#FF6B00', '#FF69B4', '#ADFF2F'];
+            const shapes = ['●', '★', '♦', '■', '▲', '♥', '✦'];
+            
+            for (let i = 0; i < 40; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.color = colors[i % colors.length];
+                sparkle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                sparkle.style.animationDelay = Math.random() * 8 + 's';
+                sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                magicBg.appendChild(sparkle);
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createSparkles();
+            revealOnScroll();
+            loadGalleryMedia(); // Load gallery media on page load
+        });
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Modal functions
+        function openPrivacyModal() {
+            document.getElementById('privacyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openAccessibilityModal() {
+            document.getElementById('accessibilityModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAccessibilityModal() {
+            document.getElementById('accessibilityModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const privacyModal = document.getElementById('privacyModal');
+            const accessibilityModal = document.getElementById('accessibilityModal');
+            if (event.target == privacyModal) {
+                closePrivacyModal();
+            }
+            if (event.target == accessibilityModal) {
+                closeAccessibilityModal();
+            }
+        }
+    </script>
+</body>
+</html>
