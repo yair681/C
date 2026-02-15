@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>חיים משמיים - קוסם מקצועי | מופעי קסמים מצחיקים</title>
+    <title>חיים משמיים - קוסם מקצועי | מופעי קסמים חינוכיים לילדים</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Varela+Round&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -96,6 +96,58 @@
             10% { opacity: 1; }
             90% { opacity: 1; }
             100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        /* Floating stars and confetti animations removed */
+
+        /* Fireworks Animation */
+        .firework {
+            position: fixed;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .firework-core {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 90px currentColor;
+            animation: coreExplosion 0.8s ease-out forwards;
+        }
+
+        @keyframes coreExplosion {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
         }
 
         /* Navigation */
@@ -578,18 +630,28 @@
         }
         
         .section-title::before {
-            content: attr(data-text);
+            content: '⭐✨';
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            z-index: -1;
-            filter: blur(10px);
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            animation: starTwinkle 2s ease-in-out infinite;
+        }
+
+        .section-title::after {
+            content: '✨⭐';
+            position: absolute;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            animation: starTwinkle 2s ease-in-out infinite 1s;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateY(-50%) scale(1.2); }
         }
 
         @keyframes titlePulse {
@@ -1338,6 +1400,11 @@
                 padding: 0 0.5rem !important;
             }
 
+            .section-title::before,
+            .section-title::after {
+                display: none !important;
+            }
+
             .section-subtitle {
                 font-size: 0.95rem !important;
                 padding: 0 0.8rem !important;
@@ -1522,6 +1589,8 @@
                 font-size: 0.9rem !important;
             }
 
+
+
             .gallery-grid {
                 grid-template-columns: 1fr !important;
                 gap: 1rem !important;
@@ -1694,9 +1763,9 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>חיים משמיים 🎩</h1>
-                <p class="subtitle">קוסם, להטוטן ואומן חושים מקצועי!</p>
-                <p>מופע מהפנט, מרהיב ומצחיק במיוחד לילדים, נוער ומבוגרים! בשילוב תפאורה מפוארת, קסמים מרהיבים, להטוטי אש 🔥, קסם ריחוף מעל החרבות, בובות ענק, בלוני צורות, פרסים לכולם, הגברה מקצועית, מכונת בועות סבון, לייזרים, כדורי אורות, מכונת עשן, גב במה מפואר, מחצלות והזמנה דיגיטלית מונפשת! 🎪✨</p>
+                <h1>חיים משמיים 🎩✨</h1>
+                <p class="subtitle">קוסם, להטוטן ואמן חושים לילדים מקצועי!</p>
+                <p>מופע חינוכי מהפנט, מרהיב ומצחיק במיוחד לילדים! 🎪✨ בשילוב תפאורה מפוארת, קסמים מרהיבים, להטוטי אש 🔥, קסם ריחוף מעל החרבות, בובות ענק, בלוני צורות, קונפטי מסולסל בשיא המופע 🎊, פרסים לכולם, הגברה מקצועית, מכונת בועות סבון, לייזרים, כדורי אורות, מכונת עשן, גב במה מפואר עם כוכבים נוצצים ⭐, מחצלות והזמנה דיגיטלית מונפשת! 🎪✨</p>
                 <p style="font-weight: 700; font-size: 1.4rem; margin-top: 1rem;">המופע עד שעתיים - הפקה מהקסמים!</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">הזמינו עכשיו! 🎪</a>
@@ -1735,15 +1804,15 @@
 
     <!-- About Section -->
     <section id="about" class="reveal">
-        <h2 class="section-title">קצת עליי 🎭</h2>
-        <p class="section-subtitle">הקוסם, הלהטוטן ואומן החושים שיגרום לכם לצחוק מהלב!</p>
+        <h2 class="section-title">⭐ קצת עליי 🎭⭐</h2>
+        <p class="section-subtitle">הקוסם, הלהטוטן ואמן החושים לילדים שיגרום לכם לצחוק מהלב!</p>
         <div class="about-content">
             <div class="about-text">
-                <p>שלום! אני <strong>חיים משמיים</strong>, קוסם, להטוטן ואומן חושים מקצועי עם יותר מ-20 שנות ניסיון בהפקת מופעי קסמים מהפנטים ומצחיקים במיוחד!</p>
-                <p>המופע שלי כולל: <strong>תפאורה מפוארת</strong>, <strong>קסמים מרהיבים</strong>, <strong>להטוטי אש 🔥</strong>, <strong>קסם ריחוף מעל החרבות</strong>, <strong>בובות ענק</strong>, <strong>בלוני צורות</strong>, פרסים לכולם, הגברה מקצועית ביותר, מכונת בועות סבון, לייזרים, כדורי אורות, מכונת עשן, גב במה מפואר, מחצלות והזמנה דיגיטלית מונפשת עם תמונות החוגג/ת!</p>
-                <p>אני מופיע בכל רחבי הארץ ומתמחה בימי הולדת, אירועי בית ספר, אירועי חברות ומופעי במה. כל מופע מותאם אישית לקהל ולאירוע שלכם!</p>
+                <p>שלום! אני <strong>חיים משמיים</strong>, קוסם, להטוטן ואמן חושים לילדים, מקצועי עם למעלה מ-20 שנות ניסיון בהפקת מופעי קסמים חינוכיים, מהפנטים וימי הולדת מצחיקים במיוחד! ⭐</p>
+                <p>כל מופע מותאם אישית לגיל הילדים ולאירוע שלכם. המטרה שלי היא להעצים את ילד יום ההולדת. אני מגיע מעולם החינוך עם ניסיון עשיר בעבודה עם ילדים. 🎓</p>
+                <p>המופע שלי כולל: <strong>תפאורה מפוארת עם כוכבים נוצצים ⭐</strong>, <strong>קסמים חינוכיים מרהיבים</strong>, <strong>להטוטי אש 🔥</strong>, <strong>קסם ריחוף מעל החרבות</strong>, <strong>בובות ענק</strong>, <strong>בלוני צורות</strong>, <strong>קונפטי מסולסל בשיא המופע 🎊</strong>, פרסים לכולם, הגברה מקצועית ביותר, מכונת בועות סבון, לייזרים, כדורי אורות, מכונת עשן, גב במה מפואר, מחצלות והזמנה דיגיטלית מונפשת עם תמונות החוגג/ת!</p>
+                <p>אני מופיע בכל רחבי הארץ ומתמחה בימי הולדת, אירועי קהילה ומופעי במה לילדים.</p>
                 <p><strong>המופע עד שעתיים מלאות - הפקה מהקסמים!</strong> 🎪✨</p>
-                <p>המטרה שלי: להפוך את האירוע שלכם לחוויה קסומה שכולם יזכרו!</p>
             </div>
             <div class="about-image">
                 🎩✨😄
@@ -1753,50 +1822,56 @@
 
     <!-- Services Section -->
     <section id="services" class="reveal">
-        <h2 class="section-title">סוגי המופעים 🎪</h2>
-        <p class="section-subtitle">מופעים מותאמים אישית לכל אירוע!</p>
+        <h2 class="section-title">⭐ סוגי המופעים 🎪⭐</h2>
+        <p class="section-subtitle">מופעים חינוכיים מותאמים אישית לכל אירוע!</p>
         <div class="services-grid">
             <div class="service-card">
-                <span class="service-icon">🎂</span>
-                <h3>ימי הולדת</h3>
-                <p>מופע קסמים מלא צחוק ואנרגיה שמותאם במיוחד לילדי יום ההולדת!</p>
+                <span class="service-icon">🎂⭐</span>
+                <h3>חבילת ימי הולדת + 🎈</h3>
+                <p>מופע קסמים חינוכי מלא צחוק ואנרגיה שמותאם במיוחד לגיל הילדים, כולל בלוני צורות מדהימים לכל ילד!</p>
                 <ul>
-                    <li>משחקים אינטראקטיביים</li>
-                    <li>קסמים מדהימים</li>
-                    <li>צחוק ללא הפסקה</li>
-                    <li>פרסים לכולם</li>
+                    <li>משחקים חינוכיים אינטראקטיביים</li>
+                    <li>קסמים חינוכיים מרהיבים</li>
+                    <li>בלוני צורות מיוחדים לכל ילד 🎈</li>
+                    <li>קונפטי מסולסל בשיא המופע 🎊</li>
+                    <li>העצמת ילד יום ההולדת</li>
+                    <li>פרסים וכוכבים נוצצים לכולם ⭐</li>
                 </ul>
             </div>
             <div class="service-card">
-                <span class="service-icon">🏫</span>
-                <h3>אירועי בית ספר</h3>
-                <p>מופעים מיוחדים לבתי ספר וגני ילדים - חוויה חינוכית משעשעת ובלתי נשכחת!</p>
+                <span class="service-icon">🏫⭐</span>
+                <h3>אירועי קהילה</h3>
+                <p>מופעים חינוכיים מיוחדים לבתי ספר, גני ילדים ומרכזים קהילתיים - חוויה חינוכית משעשעת ובלתי נשכחת!</p>
                 <ul>
-                    <li>מופעי במה גדולים</li>
-                    <li>התאמה לכל גיל</li>
-                    <li>אינטראקציה מלאה</li>
-                    <li>חוויה חינוכית</li>
+                    <li>מופעי במה חינוכיים גדולים</li>
+                    <li>התאמה מדויקת לכל גיל</li>
+                    <li>אינטראקציה מלאה עם הילדים</li>
+                    <li>קונפטי מסולסל בשיא המופע 🎊</li>
+                    <li>רקע עם כוכבים נוצצים ⭐</li>
                 </ul>
             </div>
             <div class="service-card">
-                <span class="service-icon">🏢</span>
-                <h3>אירועי חברות</h3>
-                <p>מופעים קסומים לאירועי חברות, ימי גיבוש, וכנסים עסקיים!</p>
+                <span class="service-icon">⏰⭐</span>
+                <h3>מופע עד שעה</h3>
+                <p>מופע קסמים חינוכי קצר ומרוכז עד שעה - מושלם לאירועים קצרים!</p>
                 <ul>
-                    <li>מופעי במה מקצועיים</li>
-                    <li>אינטראקציה עם הקהל</li>
-                    <li>התאמה למסר החברה</li>
-                    <li>מופע בן שעתיים</li>
+                    <li>מופע דינמי ומרוכז</li>
+                    <li>קסמים חינוכיים מרהיבים</li>
+                    <li>אינטראקציה מלאה עם הילדים</li>
+                    <li>קונפטי מסולסל בסיום 🎊</li>
+                    <li>מותאם לילדים בכל גיל</li>
                 </ul>
             </div>
         </div>
+
+
     </section>
 
     <!-- Testimonials Section -->
     <section id="testimonials">
         <div class="testimonials-container">
-            <h2 class="section-title">מה אומרים עלינו? ⭐</h2>
-            <p class="section-subtitle">המלצות מלקוחות מרוצים!</p>
+            <h2 class="section-title">⭐ מה אומרים עליי? ⭐</h2>
+            <p class="section-subtitle">המלצות מהורים מרוצים!</p>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <p class="testimonial-text">חיים הקוסם הפך את יום ההולדת של הבן שלי לחוויה בלתי נשכחת! הילדים צחקו ונהנו כל הזמן, והקסמים היו פשוט מדהימים. ממליצה בחום!</p>
@@ -1926,8 +2001,8 @@
 
     <!-- Gallery Section -->
     <section id="gallery" class="reveal">
-        <h2 class="section-title">גלריה 📸</h2>
-        <p class="section-subtitle">רגעים קסומים מהמופעים שלנו!</p>
+        <h2 class="section-title">⭐ גלריה 📸⭐</h2>
+        <p class="section-subtitle">רגעים קסומים עם כוכבים נוצצים מהמופעים שלנו!</p>
         
         <!-- Gallery Grid - Will be populated dynamically -->
         <div id="galleryGrid" class="gallery-grid">
@@ -1966,8 +2041,8 @@
 
     <!-- Contact Section -->
     <section id="contact" class="reveal">
-        <h2 class="section-title">בואו נדבר! 📞</h2>
-        <p class="section-subtitle">מוכנים להזמין מופע קסום? צרו קשר עכשיו!</p>
+        <h2 class="section-title">⭐ בואו נדבר! 📞⭐</h2>
+        <p class="section-subtitle">מוכנים להזמין מופע קסמים חינוכי? צרו קשר עכשיו!</p>
         <div class="contact-wrapper">
             <div class="contact-info-box">
                 <h3>פרטי יצירת קשר</h3>
@@ -1995,7 +2070,7 @@
 
                 <!-- Big WhatsApp Button -->
                 <div style="margin-top: 3rem; text-align: center;">
-                    <a href="https://wa.me/972544347168?text=היי%20חיים%2C%20אני%20מעוניין%20במופע%20קסמים%20%F0%9F%8E%AA%E2%9C%A8" 
+                    <a href="https://wa.me/972544347168?text=היי%20חיים%2C%20אשמח%20לפרטים%20נוספים" 
                        target="_blank" 
                        class="whatsapp-button">
                         <span style="font-size: 3rem; margin-left: 1rem;">💬</span>
@@ -2092,8 +2167,8 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 חיים משמיים - קוסם מקצועי | כל הזכויות שמורות ✨</p>
-        <p style="margin-top: 0.5rem; opacity: 0.7;">מופעי קסמים מצחיקים לכל האירועים</p>
+        <p>© 2026 חיים משמיים - קוסם מקצועי | כל הזכויות שמורות ⭐✨</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">מופעי קסמים חינוכיים ומצחיקים לילדים</p>
         <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; font-size: 0.9rem;">
             <a href="#" onclick="openPrivacyModal(); return false;" style="color: white; text-decoration: underline; opacity: 0.8;">הצהרת פרטיות</a>
             <a href="#" onclick="openAccessibilityModal(); return false;" style="color: white; text-decoration: underline; opacity: 0.8;">הצהרת נגישות</a>
@@ -2139,7 +2214,12 @@
                 const csvText = await response.text();
                 
                 // Parse CSV
-                const mediaFiles = parseCSV(csvText);
+                const { mediaFiles, heroImageUrl } = parseCSV(csvText);
+                
+                // Load hero image if found
+                if (heroImageUrl) {
+                    loadHeroImage(heroImageUrl);
+                }
                 
                 if (mediaFiles && mediaFiles.length > 0) {
                     loadingMessage.style.display = 'none';
@@ -2163,13 +2243,14 @@
             
             const lines = csvText.trim().split(/\r?\n/);
             const mediaFiles = [];
+            let heroImageUrl = null;
             
             console.log('Total lines:', lines.length);
             
             // Skip empty CSV
             if (lines.length <= 1) {
                 console.log('CSV is empty or has only header');
-                return mediaFiles;
+                return { mediaFiles, heroImageUrl };
             }
             
             // Skip header row (line 0) and process data rows
@@ -2192,22 +2273,27 @@
                     console.log(`Type: ${type}, URL: ${url}, Title: ${title}`);
                     
                     // Validate
-                    if ((type === 'image' || type === 'video' || type === 'youtube') && url && url.startsWith('http')) {
-                        const media = {
-                            type: type,
-                            path: url,
+                    // Check for hero image
+                    if (type === 'hero' && url && url.startsWith('http')) {
+                    heroImageUrl = url;
+                    console.log('🖼️ Found HERO image:', heroImageUrl);
+                    } else if ((type === 'image' || type === 'video' || type === 'youtube') && url && url.startsWith('http')) {
+                    const media = {
+                        type: type,
+                        path: url,
                             name: title || (type === 'image' ? 'תמונה' : 'סרטון')
-                        };
+                    };
                         console.log('Added media:', media);
-                        mediaFiles.push(media);
-                    } else {
-                        console.log('Skipped line - invalid format');
-                    }
+                    mediaFiles.push(media);
+                } else {
+                    console.log('Skipped line - invalid format');
+                }
                 }
             }
             
             console.log('Total media files found:', mediaFiles.length);
-            return mediaFiles;
+            console.log('Hero image URL:', heroImageUrl);
+            return { mediaFiles, heroImageUrl };
         }
         
         // Parse a single CSV line (handle commas inside quotes)
@@ -2424,6 +2510,161 @@
             }
         }
 
+        // Load Hero Image from Google Sheets
+        function loadHeroImage(imageUrl) {
+            console.log('🎆 Loading hero image:', imageUrl);
+            
+            const heroContainer = document.querySelector('.hero-image');
+            const heroPlaceholder = document.querySelector('.hero-image-placeholder');
+            
+            if (!heroContainer || !heroPlaceholder) {
+                console.error('❌ Hero container not found');
+                return;
+            }
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'חיים משמיים - קוסם מקצועי';
+            img.style.cssText = `
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 30px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                display: block;
+            `;
+            
+            img.onload = () => {
+                console.log('✅ Hero image loaded successfully!');
+                heroPlaceholder.style.display = 'none';
+                heroContainer.appendChild(img);
+            };
+            
+            img.onerror = () => {
+                console.error('❌ Hero image failed to load:', imageUrl);
+                console.log('⚠️ Make sure the Google Drive link is a direct link:');
+                console.log('https://drive.google.com/uc?export=view&id=YOUR_FILE_ID');
+            };
+        }
+
+        // Floating stars and confetti removed per user request
+
+        // Create Fireworks Effect
+        function createFirework(x, y) {
+            const colors = ['#FF1493', '#FFD700', '#00D9FF', '#00FF7F', '#9D4EDD', '#FF6B00', '#FF69B4', '#ADFF2F'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + 'px';
+            firework.style.top = y + 'px';
+            document.body.appendChild(firework);
+            
+            // Create core explosion
+            const core = document.createElement('div');
+            core.className = 'firework-core';
+            core.style.color = color;
+            firework.appendChild(core);
+            
+            // Create particles
+            const particleCount = 50; // הגדלנו מ-30 ל-50
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.background = color;
+                particle.style.boxShadow = `0 0 20px ${color}, 0 0 40px ${color}`; // זוהר כפול
+                
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 80 + Math.random() * 120; // הגדלנו את המהירות
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.animation = `explode ${1 + Math.random() * 0.5}s ease-out forwards`;
+                
+                // Use CSS custom properties for animation
+                const keyframes = `
+                    @keyframes explode-${i} {
+                        0% {
+                            transform: translate(0, 0) scale(1);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translate(${tx}px, ${ty}px) scale(0);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                
+                particle.style.animation = `explode-${i} ${1 + Math.random() * 0.5}s ease-out forwards`;
+                
+                // Add inline animation
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                    { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 500,
+                    easing: 'ease-out',
+                    fill: 'forwards'
+                });
+                
+                firework.appendChild(particle);
+            }
+            
+            // Remove firework after animation
+            setTimeout(() => {
+                document.body.removeChild(firework);
+            }, 2000);
+        }
+
+        // Random fireworks throughout the page - יותר זיקוקים!
+        function startRandomFireworks() {
+            // זיקוק ראשון מיד
+            setTimeout(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * (window.innerHeight * 0.6);
+                createFirework(x, y);
+            }, 500);
+            
+            // זיקוקים כל שנייה וחצי
+            setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * (window.innerHeight * 0.6);
+                createFirework(x, y);
+            }, 1500); // כל 1.5 שניות במקום 3
+            
+            // זיקוק נוסף עם עיכוב שונה לאפקט כפול
+            setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * (window.innerHeight * 0.6);
+                createFirework(x, y);
+            }, 2500);
+            
+            // זיקוק שלישי לאפקט מקסימלי
+            setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * (window.innerHeight * 0.6);
+                createFirework(x, y);
+            }, 3500);
+            
+            // זיקוק רביעי לסיפוק מקסימלי
+            setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * (window.innerHeight * 0.6);
+                createFirework(x, y);
+            }, 4000);
+        }
+
+        // Click to create firework
+        document.addEventListener('click', (e) => {
+            // Only trigger on background clicks, not on buttons/links
+            if (e.target.tagName !== 'A' && e.target.tagName !== 'BUTTON' && !e.target.closest('a') && !e.target.closest('button')) {
+                createFirework(e.clientX, e.clientY);
+            }
+        });
+
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
@@ -2464,6 +2705,7 @@
         window.addEventListener('load', () => {
             console.log('✅ Page loaded!');
             createSparkles();
+            startRandomFireworks(); // Start fireworks
             revealOnScroll();
             
             // Load gallery - with error handling
