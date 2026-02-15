@@ -1983,31 +1983,48 @@
             const loadingMessage = document.getElementById('galleryLoading');
             const noMediaMessage = document.getElementById('noMediaMessage');
             
-            console.log('renderGallery called with', mediaFiles.length, 'files');
+            console.log('🎆 renderGallery called with', mediaFiles.length, 'files');
+            console.log('👀 galleryGrid element:', galleryGrid);
+            console.log('📊 galleryGrid display:', galleryGrid ? galleryGrid.style.display : 'N/A');
             
             // Hide loading and no-media messages
-            loadingMessage.style.display = 'none';
-            noMediaMessage.style.display = 'none';
+            if (loadingMessage) loadingMessage.style.display = 'none';
+            if (noMediaMessage) noMediaMessage.style.display = 'none';
             
             galleryGrid.innerHTML = '';
+            console.log('✨ Cleared gallery grid');
             
             mediaFiles.forEach((media, index) => {
+                console.log(`🖼️ Processing media ${index + 1}:`, media);
+                
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
                 item.style.cursor = 'pointer';
                 item.onclick = () => openLightbox(media);
                 
+                console.log('🎭 Created gallery-item div');
+                
                 if (media.type === 'image') {
+                    console.log('🖼️ Creating image element for:', media.path);
+                    
                     const img = document.createElement('img');
                     img.src = media.path;
                     img.alt = media.name;
                     img.style.width = '100%';
                     img.style.height = '100%';
                     img.style.objectFit = 'cover';
-                    img.onerror = () => {
+                    
+                    img.onload = () => {
+                        console.log('✅ Image loaded successfully:', media.path);
+                    };
+                    
+                    img.onerror = (e) => {
+                        console.error('❌ Image failed to load:', media.path, e);
                         item.innerHTML = '<div style="font-size: 3rem;">🖼️</div><div style="font-size: 0.9rem; margin-top: 0.5rem;">תמונה</div>';
                     };
+                    
                     item.appendChild(img);
+                    console.log('💎 Appended image to item');
                 } else if (media.type === 'video') {
                     const video = document.createElement('video');
                     video.src = media.path;
@@ -2039,7 +2056,13 @@
                     playIcon.style.pointerEvents = 'none';
                     item.appendChild(playIcon);
                 }
+                
+                // Append item to gallery
+                galleryGrid.appendChild(item);
+                console.log(`✅ Appended item ${index + 1} to gallery`);
             });
+            
+            console.log('✨ Gallery rendering complete! Total items:', galleryGrid.children.length);
         }
         
         // Open lightbox
