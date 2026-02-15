@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בדיקת גלריה</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+        }
+        
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #FF1493;
+            text-align: center;
+        }
+        
+        .debug-info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎪 בדיקת גלריה - חיים משמיים</h1>
+        
+        <div id="debugInfo" class="debug-info">טוען...</div>
+        
+        <div id="gallery" class="gallery"></div>
+    </div>
+
+    <script>
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSyvRqbeAJb6JuATYK7NBYi8ki1ruFvmRx344UAD6ZqD3BsIhzXHahfQTcnF_gT_5RgkQMYOuIY0HbL/pub?output=csv';
+        
+        async function testGallery() {
+            const debugInfo = document.getElementById('debugInfo');
+            const gallery = document.getElementById('gallery');
+            
+            debugInfo.innerHTML = '🔄 מתחיל טעינה...\n';
+            
+            try {
+                debugInfo.innerHTML += '📡 שולח בקשה ל-Google Sheets...\n';
+                
+                const response = await fetch(SHEET_URL, {
+                    method: 'GET',
+                    cache: 'no-cache'
+                });
+                
+                debugInfo.innerHTML += `📊 סטטוס: ${response.status}\n\n`;
+                
+                const csvText = await response.text();
+                debugInfo.innerHTML += `📝 CSV:\n${csvText}\n\n`;
+                
+                const lines = csvText.trim().split(/\r?\n/);
+                const images = [];
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const columns = lines[i].split(',').map(col => col.trim().replace(/^"|"$/g, ''));
+                    if (columns.length >= 2 && columns[0].toLowerCase() === 'image') {
+                        images.push({ url: columns[1], title: columns[2] || 'תמונה' });
+                    }
+                }
+                
+                debugInfo.innerHTML += `\n🎉 נמצאו ${images.length} תמונות\n`;
+                
+                images.forEach((img, i) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    
+                    const imgEl = document.createElement('img');
+                    imgEl.src = img.url;
+                    imgEl.alt = img.title;
+                    imgEl.onload = () => debugInfo.innerHTML += `✅ תמונה ${i+1} נטענה\n`;
+                    imgEl.onerror = () => {
+                        debugInfo.innerHTML += `❌ שגיאה בתמונה ${i+1}: ${img.url}\n`;
+                        item.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;background:#ffebee">❌</div>';
+                    };
+                    
+                    item.appendChild(imgEl);
+                    gallery.appendChild(item);
+                });
+                
+            } catch (error) {
+                debugInfo.innerHTML += `\n❌ שגיאה: ${error.message}\n`;
+            }
+        }
+        
+        window.addEventListener('load', testGallery);
+    </script>
+</body>
+</html>
