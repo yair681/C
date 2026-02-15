@@ -2195,7 +2195,7 @@
             
             try {
                 // Google Sheets CSV URL (Direct link)
-                const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSyvRqbeAJb6JuATYK7NBYi8ki1ruFvmRx344UAD6ZqD3BsIhzXHahfQTcnF_gT_5RgkQMYOuIY0HbL/pub?output=csv';
+                const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSyvRqbeAJb6JuATYK7NBYi8ki1ruFvmRx344UAD6ZqD3BsIhzXHahfQTcnF_gT_5RgkQMYOuIY0HbL/pub?output=csv&timestamp=' + Date.now();
                 
                 const response = await fetch(SHEET_URL, {
                     method: 'GET',
