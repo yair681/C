@@ -2211,11 +2211,16 @@
                 const csvText = await response.text();
                 
                 // Parse CSV
-                const { mediaFiles, heroImageUrl } = parseCSV(csvText);
+                const { mediaFiles, heroImageUrl, aboutImageUrl } = parseCSV(csvText);
                 
                 // Load hero image if found
                 if (heroImageUrl) {
                     loadHeroImage(heroImageUrl);
+                }
+                
+                // Load about image if found
+                if (aboutImageUrl) {
+                    loadAboutImage(aboutImageUrl);
                 }
                 
                 if (mediaFiles && mediaFiles.length > 0) {
@@ -2241,6 +2246,7 @@
             const lines = csvText.trim().split(/\r?\n/);
             const mediaFiles = [];
             let heroImageUrl = null;
+            let aboutImageUrl = null;
             
             console.log('Total lines:', lines.length);
             
@@ -2274,6 +2280,9 @@
                     if (type === 'hero' && url && url.startsWith('http')) {
                     heroImageUrl = url;
                     console.log('🖼️ Found HERO image:', heroImageUrl);
+                    } else if (type === 'about' && url && url.startsWith('http')) {
+                    aboutImageUrl = url;
+                    console.log('🎭 Found ABOUT image:', aboutImageUrl);
                     } else if ((type === 'image' || type === 'video' || type === 'youtube') && url && url.startsWith('http')) {
                     const media = {
                         type: type,
@@ -2290,7 +2299,8 @@
             
             console.log('Total media files found:', mediaFiles.length);
             console.log('Hero image URL:', heroImageUrl);
-            return { mediaFiles, heroImageUrl };
+            console.log('About image URL:', aboutImageUrl);
+            return { mediaFiles, heroImageUrl, aboutImageUrl };
         }
         
         // Parse a single CSV line (handle commas inside quotes)
@@ -2540,6 +2550,43 @@
             
             img.onerror = () => {
                 console.error('❌ Hero image failed to load:', imageUrl);
+                console.log('⚠️ Make sure the Google Drive link is a direct link:');
+                console.log('https://drive.google.com/uc?export=view&id=YOUR_FILE_ID');
+            };
+        }
+
+        // Load About Image from Google Sheets
+        function loadAboutImage(imageUrl) {
+            console.log('🎭 Loading about image:', imageUrl);
+            
+            const aboutContainer = document.querySelector('.about-image');
+            
+            if (!aboutContainer) {
+                console.error('❌ About container not found');
+                return;
+            }
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'חיים משמיים - קוסם מקצועי';
+            img.style.cssText = `
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 30px;
+                box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+                display: block;
+            `;
+            
+            img.onload = () => {
+                console.log('✅ About image loaded successfully!');
+                aboutContainer.innerHTML = ''; // Clear placeholder emoji
+                aboutContainer.appendChild(img);
+            };
+            
+            img.onerror = () => {
+                console.error('❌ About image failed to load:', imageUrl);
                 console.log('⚠️ Make sure the Google Drive link is a direct link:');
                 console.log('https://drive.google.com/uc?export=view&id=YOUR_FILE_ID');
             };
