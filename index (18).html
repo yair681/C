@@ -2415,6 +2415,8 @@
                         item.innerHTML = '<div style="font-size: 3rem;">🎬</div><div style="font-size: 0.9rem; margin-top: 0.5rem; color: white;">YouTube URL שגוי</div>';
                     }
                 } else if (media.type === 'video') {
+                    console.log('🎬 Creating video element for:', media.path);
+                    
                     const video = document.createElement('video');
                     video.src = media.path;
                     video.style.width = '100%';
@@ -2422,28 +2424,58 @@
                     video.style.objectFit = 'cover';
                     video.muted = true;
                     video.loop = true;
-                    video.onerror = () => {
-                        item.innerHTML = '<div style="font-size: 3rem;">🎬</div><div style="font-size: 0.9rem; margin-top: 0.5rem;">סרטון</div>';
+                    video.preload = 'metadata';
+                    video.playsInline = true;
+                    video.setAttribute('playsinline', '');
+                    video.setAttribute('webkit-playsinline', '');
+                    
+                    video.onloadedmetadata = () => {
+                        console.log('✅ Video metadata loaded:', media.path);
+                        video.currentTime = 0.1;
+                    };
+                    
+                    video.onerror = (e) => {
+                        console.error('❌ Video failed to load:', media.path, e);
+                        item.innerHTML = '<div style="font-size: 3rem;">🎬</div><div style="font-size: 0.9rem; margin-top: 0.5rem; color: white; background: rgba(0,0,0,0.7); padding: 0.5rem; border-radius: 8px;">לא ניתן לטעון סרטון</div>';
                     };
                     
                     // Play video on hover
-                    item.onmouseenter = () => video.play();
-                    item.onmouseleave = () => video.pause();
+                    item.onmouseenter = () => {
+                        video.play().catch(e => console.log('Could not autoplay:', e));
+                    };
+                    item.onmouseleave = () => {
+                        video.pause();
+                        video.currentTime = 0.1;
+                    };
                     
                     item.appendChild(video);
+                    console.log('💎 Appended video to item');
                     
                     // Add video indicator
                     const playIcon = document.createElement('div');
                     playIcon.innerHTML = '▶';
-                    playIcon.style.position = 'absolute';
-                    playIcon.style.top = '50%';
-                    playIcon.style.left = '50%';
-                    playIcon.style.transform = 'translate(-50%, -50%)';
-                    playIcon.style.fontSize = '3rem';
-                    playIcon.style.color = 'white';
-                    playIcon.style.textShadow = '0 0 10px rgba(0,0,0,0.8)';
-                    playIcon.style.pointerEvents = 'none';
+                    playIcon.style.cssText = `
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        font-size: 4rem;
+                        color: white;
+                        text-shadow: 0 0 20px rgba(0,0,0,0.9);
+                        pointer-events: none;
+                        background: rgba(0,0,0,0.6);
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-right: 8px;
+                        border: 3px solid white;
+                        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+                    `;
                     item.appendChild(playIcon);
+                    console.log('✅ Added play button');
                 }
                 
                 // Append item to gallery
@@ -2456,6 +2488,8 @@
         
         // Open lightbox
         function openLightbox(media) {
+            console.log('🔍 Opening lightbox for:', media);
+            
             const modal = document.getElementById('lightboxModal');
             const content = document.getElementById('lightboxContent');
             content.innerHTML = '';
@@ -2469,20 +2503,62 @@
                 img.style.borderRadius = '12px';
                 img.style.boxShadow = '0 25px 80px rgba(0,0,0,0.8)';
                 content.appendChild(img);
+            } else if (media.type === 'youtube') {
+                console.log('🎬 Creating YouTube iframe for lightbox');
+                
+                // Extract video ID
+                let videoId = '';
+                if (media.path.includes('youtube.com/watch?v=')) {
+                    videoId = media.path.split('v=')[1].split('&')[0];
+                } else if (media.path.includes('youtu.be/')) {
+                    videoId = media.path.split('youtu.be/')[1].split('?')[0];
+                }
+                
+                if (videoId) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    iframe.style.width = '90vw';
+                    iframe.style.height = '80vh';
+                    iframe.style.maxWidth = '1200px';
+                    iframe.style.border = 'none';
+                    iframe.style.borderRadius = '12px';
+                    iframe.style.boxShadow = '0 25px 80px rgba(0,0,0,0.8)';
+                    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    iframe.allowFullscreen = true;
+                    content.appendChild(iframe);
+                    console.log('✅ YouTube iframe added to lightbox');
+                }
             } else if (media.type === 'video') {
+                console.log('🎬 Creating video element for lightbox');
+                
                 const video = document.createElement('video');
                 video.src = media.path;
                 video.controls = true;
                 video.autoplay = true;
+                video.playsInline = true;
+                video.setAttribute('playsinline', '');
+                video.setAttribute('webkit-playsinline', '');
                 video.style.maxWidth = '90vw';
                 video.style.maxHeight = '90vh';
                 video.style.borderRadius = '12px';
                 video.style.boxShadow = '0 25px 80px rgba(0,0,0,0.8)';
+                
+                video.onerror = (e) => {
+                    console.error('❌ Video failed to load in lightbox:', media.path, e);
+                    content.innerHTML = '<div style="color: white; text-align: center; padding: 3rem; font-size: 1.5rem; background: rgba(255,0,0,0.3); border-radius: 12px;">⚠️ שגיאה בטעינת הסרטון<br><br><small style="font-size: 1rem;">ודא שהקובץ נגיש ובפורמט נתמך (MP4, MOV, AVI)</small></div>';
+                };
+                
+                video.onloadedmetadata = () => {
+                    console.log('✅ Video loaded in lightbox successfully');
+                };
+                
                 content.appendChild(video);
+                console.log('✅ Video element added to lightbox');
             }
             
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            console.log('🎉 Lightbox opened');
         }
         
         // Close lightbox
