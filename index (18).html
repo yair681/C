@@ -2269,11 +2269,17 @@
                 console.log('Parsed columns:', columns);
                 
                 if (columns.length >= 2) {
-                    const type = columns[0].toLowerCase();
+                    let type = columns[0].toLowerCase();
                     const url = columns[1];
                     const title = columns[2] || '';
                     
                     console.log(`Type: ${type}, URL: ${url}, Title: ${title}`);
+                    
+                    // Auto-detect Streamable links
+                    if (url.includes('streamable.com')) {
+                        type = 'streamable';
+                        console.log('🎬 Auto-detected Streamable link');
+                    }
                     
                     // Validate
                     // Check for hero image
@@ -2283,7 +2289,7 @@
                     } else if (type === 'about' && url && url.startsWith('http')) {
                     aboutImageUrl = url;
                     console.log('🎭 Found ABOUT image:', aboutImageUrl);
-                    } else if ((type === 'image' || type === 'video' || type === 'youtube') && url && url.startsWith('http')) {
+                    } else if ((type === 'image' || type === 'video' || type === 'youtube' || type === 'streamable') && url && url.startsWith('http')) {
                     const media = {
                         type: type,
                         path: url,
@@ -2476,6 +2482,74 @@
                     `;
                     item.appendChild(playIcon);
                     console.log('✅ Added play button');
+                } else if (media.type === 'streamable') {
+                    console.log('🎬 Creating Streamable embed for:', media.path);
+                    
+                    // Extract Streamable ID from URL
+                    // URL format: https://streamable.com/l3y0cf
+                    let streamableId = '';
+                    if (media.path.includes('streamable.com/')) {
+                        streamableId = media.path.split('streamable.com/')[1].split('?')[0];
+                    }
+                    
+                    if (streamableId) {
+                        // Create thumbnail container
+                        const thumbContainer = document.createElement('div');
+                        thumbContainer.style.cssText = `
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(135deg, #FF1493, #9D4EDD);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                        `;
+                        
+                        // Try to load Streamable thumbnail
+                        const thumb = document.createElement('img');
+                        thumb.src = `https://cdn-cf-east.streamable.com/image/${streamableId}.jpg`;
+                        thumb.style.cssText = `
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        `;
+                        thumb.onerror = () => {
+                            // If thumbnail fails, show icon
+                            thumbContainer.innerHTML = '<div style="font-size: 4rem;">🎬</div>';
+                        };
+                        
+                        thumbContainer.appendChild(thumb);
+                        item.appendChild(thumbContainer);
+                        
+                        // Add play button
+                        const playIcon = document.createElement('div');
+                        playIcon.innerHTML = '▶';
+                        playIcon.style.cssText = `
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-size: 4rem;
+                            color: white;
+                            text-shadow: 0 0 20px rgba(0,0,0,0.9);
+                            pointer-events: none;
+                            background: rgba(0,0,0,0.6);
+                            width: 80px;
+                            height: 80px;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding-right: 8px;
+                            border: 3px solid white;
+                            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+                        `;
+                        item.appendChild(playIcon);
+                        console.log('✅ Streamable thumbnail added');
+                    } else {
+                        console.error('❌ Invalid Streamable URL:', media.path);
+                        item.innerHTML = '<div style="font-size: 3rem;">🎬</div><div style="font-size: 0.9rem; margin-top: 0.5rem; color: white;">Streamable URL שגוי</div>';
+                    }
                 }
                 
                 // Append item to gallery
@@ -2554,6 +2628,32 @@
                 
                 content.appendChild(video);
                 console.log('✅ Video element added to lightbox');
+            } else if (media.type === 'streamable') {
+                console.log('🎬 Creating Streamable iframe for lightbox');
+                
+                // Extract Streamable ID
+                let streamableId = '';
+                if (media.path.includes('streamable.com/')) {
+                    streamableId = media.path.split('streamable.com/')[1].split('?')[0];
+                }
+                
+                if (streamableId) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = `https://streamable.com/e/${streamableId}?autoplay=1`;
+                    iframe.style.width = '90vw';
+                    iframe.style.height = '80vh';
+                    iframe.style.maxWidth = '1200px';
+                    iframe.style.border = 'none';
+                    iframe.style.borderRadius = '12px';
+                    iframe.style.boxShadow = '0 25px 80px rgba(0,0,0,0.8)';
+                    iframe.allowFullscreen = true;
+                    iframe.allow = 'autoplay; fullscreen';
+                    content.appendChild(iframe);
+                    console.log('✅ Streamable iframe added to lightbox');
+                } else {
+                    console.error('❌ Invalid Streamable URL in lightbox');
+                    content.innerHTML = '<div style="color: white; text-align: center; padding: 3rem; font-size: 1.5rem; background: rgba(255,0,0,0.3); border-radius: 12px;">⚠️ Streamable URL שגוי</div>';
+                }
             }
             
             modal.style.display = 'block';
